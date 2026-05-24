@@ -70,40 +70,15 @@ The plugin generates default categories on first run:
 ## Building from Source
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-repo/endstone-makimarket.git
+git clone https://github.com/MakiTazo/MakiMarket
 cd endstone-makimarket
 ```
 
-2. Install dependencies:
-```bash
-pip install -e .
-```
-
+2. Install dependencies.
 3. Build the distribution:
 ```bash
-python -m build
-```
-
-## File Structure
-
-```
-endstone-makimarket/
-├── endstone_makimarket/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── config_loader.py
-│   ├── utils.py
-│   ├── commands/
-│   │   ├── __init__.py
-│   │   ├── shop_command.py
-│   │   ├── buy_command.py
-│   │   ├── sell_command.py
-│   │   └── reload_command.py
-│   └── forms/
-│       ├── shop_menu.py
-│       └── sell_menu.py
-├── pyproject.toml
-└── README.md
+pip install pipx
+pipx run build --wheel
 ```
 
 ## Dependencies
