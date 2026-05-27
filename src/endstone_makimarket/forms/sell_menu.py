@@ -20,23 +20,14 @@ def load_all_sellable_items(market_path: Path) -> dict:
     return all_items
 
 def open_sell_menu(plugin, player: Player) -> None:
-    market_path = Path(plugin.data_folder) / "market"
+    market_path = Path(plugin.data_folder) / "categories"
     sellable_items = load_all_sellable_items(market_path)
     if not sellable_items:
         player.send_message(f"{ColorFormat.RED}No sellable items configured in market!")
         return
     menu = Menu(MenuType.DOUBLE_CHEST, "§lSell Items")
-    items_deposited = {}
-    def on_place(pl: Player, slot: int, item, inventory):
-        if item and item.type.id != "minecraft:air":
-            item_id = item.type.id
-            amount = item.amount
-            if item_id in sellable_items:
-                items_deposited[item_id] = items_deposited.get(item_id, 0) + amount
-                pl.inventory.set_item(slot, None)
-
+    menu.set_editable(True)
     def on_close(pl: Player):
-        process_sell_transaction(plugin, pl, sellable_items, items_deposited)
-    menu.set_place_listener(on_place)
+        process_sell_transaction(plugin, pl, sellable_items, menu.inventory)
     menu.set_close_listener(on_close)
     menu.send_to(player)

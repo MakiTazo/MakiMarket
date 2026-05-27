@@ -31,7 +31,7 @@ DEFAULT_CATEGORIES = {
 }
 
 def load_defaults(plugin_data_folder: str) -> None:
-    market_path = Path(plugin_data_folder) / "market"
+    market_path = Path(plugin_data_folder) / "categories"
     market_path.mkdir(parents=True, exist_ok=True)
 
     for filename, items in DEFAULT_CATEGORIES.items():
