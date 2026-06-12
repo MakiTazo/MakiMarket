@@ -24,7 +24,7 @@ def handler(plugin, sender: CommandSender, args: list[str]) -> bool:
         return True
     _cache.clear()
     _cache_time.clear()
-    market_path = Path(plugin.data_folder) / "market"
+    market_path = Path(plugin.data_folder) / "categories"
     if market_path.exists():
         sender.send_message(f"{ColorFormat.GREEN}Market reloaded successfully!")
         plugin.logger.info(f"Market reloaded by {sender.name}")
