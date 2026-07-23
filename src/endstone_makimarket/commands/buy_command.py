@@ -58,7 +58,7 @@ def handler(plugin, sender: CommandSender, args: list[str]) -> bool:
         sender.send_message(f"{ColorFormat.RED}Usage: /buy <item> [amount]")
         return True
 
-    market_path = Path(plugin.data_folder) / "market"
+    market_path = Path(plugin.data_folder) / "categories"
     all_items = load_all_items(market_path)
     if not all_items:
         sender.send_message(f"{ColorFormat.RED}No items in market!")
